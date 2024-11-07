@@ -1,19 +1,30 @@
 package FantasticWorld;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Vector;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class CreatePlayerCommand implements Command {
     private Player currentPlayer;
     private Stack<Command> commands;
-    private HashMap<Player, ArrayList<Hero>> playerHeroes;
+    private Vector<Player> players;
     private Scanner scanner;
     Player p;
-    public void execute() {
-        p = new Player();
 
+    public void execute() {
+        String s;
+        System.out.print("\nPlayer ID:- ");
+        s = scanner.next();
+        p = new Player(s);
+        System.out.print("Player Name:- ");
+        scanner.nextLine();
+        s=scanner.nextLine();
+        p.setPlayerName(s);
+        players.add(p);
+        System.out.println("\nPlayer " + p.getPlayerName() + " is created.");
+        currentPlayer = p;
+        System.out.println("Current player is changed to " + p.getPlayerID() + ".");
+        commands.push(this);
     }
 
     public void undo() {
@@ -24,11 +35,11 @@ public class CreatePlayerCommand implements Command {
         return "CreatePlayer";
     }
 
-    public CreatePlayerCommand(Player currentPlayer,Stack<Command> commands, HashMap<Player, ArrayList<Hero>> playerHeroes,
+    public CreatePlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,
             Scanner scanner) {
         this.currentPlayer = currentPlayer;
         this.commands = commands;
-        this.playerHeroes = playerHeroes;
+        this.players = players;
         this.scanner = scanner;
     }
 }

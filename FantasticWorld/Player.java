@@ -7,6 +7,10 @@ public class Player {
     private String playerName;
     private Vector<Hero> heroes;
 
+    public Player(String playerID) {
+        this.playerID = playerID;
+        this.heroes = new Vector<Hero>();
+    }
     public String getPlayerID() {
         return playerID;
     }

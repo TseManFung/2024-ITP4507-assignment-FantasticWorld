@@ -1,13 +1,13 @@
 package FantasticWorld;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
+import java.util.Vector;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class DisplayAllPlayersCommand implements Command {
     private Stack<Command> commands;
-    private HashMap<Player, ArrayList<Hero>> playerHeroes;
+    private Vector<Player> players;
     private Scanner scanner;
 
     public void execute() {
@@ -22,10 +22,10 @@ public class DisplayAllPlayersCommand implements Command {
         return "DisplayAllPlayers";
     }
 
-    public DisplayAllPlayersCommand(Stack<Command> commands, HashMap<Player, ArrayList<Hero>> playerHeroes,
+    public DisplayAllPlayersCommand(Stack<Command> commands, Vector<Player> players,
             Scanner scanner) {
         this.commands = commands;
-        this.playerHeroes = playerHeroes;
+        this.players = players;
         this.scanner = scanner;
     }
 }
