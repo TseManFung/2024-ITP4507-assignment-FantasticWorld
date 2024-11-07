@@ -20,7 +20,14 @@ public class AddHeroCommand implements Command {
             System.out.println("\nPlease input hero information (id, name):- ");
             s = scanner.nextLine();
             String[] heroInfo = s.split(",",2);
-            System.out.println("Hero Type (1 = Warrior | 2 = Warlock ):- ");
+            System.out.print("Hero Type (");
+            for (int i = 0; i < heroType.length; i++) {
+                System.out.print((i + 1) + " = " + heroType[i]);
+                if (i < heroType.length - 1) {
+                    System.out.print(" | ");
+                }
+            }
+            System.out.println("):- ");
             int intHeroType = Integer.parseInt(scanner.nextLine());
             if (intHeroType < 1 || intHeroType > heroType.length) {
                 throw new IllegalArgumentException("Invalid hero type.");

@@ -10,4 +10,5 @@ public abstract class HeroFactory implements Factory {
         return h;
     }
     public abstract Hero createHero();
+    public abstract String toString();
 }
