@@ -17,7 +17,7 @@ public class RedoCommand implements Command {
     }
 
     public void undo() {
-
+        return;
     }
 
     public RedoCommand(Stack<Command> commands, Stack<Command> redos) {

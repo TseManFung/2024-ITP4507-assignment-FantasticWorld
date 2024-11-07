@@ -6,17 +6,18 @@ import FantasticWorld.*;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
-
+    
     public static void main(String[] args) {
         Stack<Command> commands = new Stack<Command>();
         Stack<Command> redos = new Stack<Command>();
         Vector<Player> players = new Vector<Player>();
         HashMap<String, CommandFactory> factories = new HashMap<String, CommandFactory>();
         Player currentPlayer = null;
+        
         boolean playing = true;
         Class<?>[] heroType;
         try {
-            heroType = new Class<?>[]{ Class.forName("Warrior"), Class.forName("Warlock") };
+            heroType = new Class<?>[]{ Class.forName("FantasticWorld.Warrior"), Class.forName("FantasticWorld.Warlock") };
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             return;

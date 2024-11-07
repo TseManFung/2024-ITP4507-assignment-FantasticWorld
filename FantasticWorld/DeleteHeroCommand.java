@@ -10,9 +10,20 @@ public class DeleteHeroCommand implements Command {
     private Stack<Command> commands;
     private Vector<Player> players;
     private Scanner scanner;
+    private Hero hero;
 
     public void execute() {
-
+        System.out.print("\nPlease input hero ID:- ");
+        String heroID = scanner.nextLine().trim();
+        for (Hero h : currentPlayer.getHeroes()) {
+            if (h.getHeroID().equals(heroID)) {
+                currentPlayer.removeHero(h);
+                hero = h;
+                System.out.println(h.getHeroID()+" "+h.getHeroName() + " is deleted.");
+                commands.push(this);
+                return;
+            }
+        }
     }
 
     public void undo() {

@@ -12,7 +12,7 @@ public class UndoCommand implements Command {
     }
 
     public void undo() {
-
+        return;
     }
 
     public UndoCommand(Stack<Command> commands, Stack<Command> redos) {

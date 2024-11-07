@@ -16,7 +16,7 @@ public class CreatePlayerCommand implements Command {
             p = new PlayerFactory(scanner).create();
         }
         players.add(p);
-        currentPlayer = p;
+        this.currentPlayer = p;
         System.out.println("Current player is changed to " + p.getPlayerID() + ".");
         commands.push(this);
     }

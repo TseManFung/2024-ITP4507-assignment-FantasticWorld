@@ -11,7 +11,11 @@ public class DisplayAllPlayersCommand implements Command {
     private Scanner scanner;
 
     public void execute() {
-
+        System.out.println();
+        for (Player p : players) {
+            System.out.println("Player " + p.getPlayerName() + " (" + p.getPlayerID() + ")");
+        }
+        commands.push(this);
     }
 
     public void undo() {

@@ -28,7 +28,7 @@ public class AddHeroCommand implements Command {
     }
 
     public String toString() {
-        return "AddHero";
+        return "Add hero, "+h.getHeroID()+", "+h.getHeroName()+", "+h.getClass().getSimpleName();
     }
 
     public AddHeroCommand(Player currentPlayer, Stack<Command> commands, Class<?>[] heroType, Scanner scanner) {
