@@ -14,6 +14,13 @@ public class Main {
         HashMap<String, CommandFactory> factories = new HashMap<String, CommandFactory>();
         Player currentPlayer = null;
         boolean playing = true;
+        Class<?>[] heroType;
+        try {
+            heroType = new Class<?>[]{ Class.forName("Warrior"), Class.forName("Warlock") };
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return;
+        }
         /*
          * c = create player, g = set current player, a = add hero, m = call hero skill,
          * d = delete hero, s = show player, p = display all players, t = change
@@ -21,7 +28,7 @@ public class Main {
          */
         factories.put("c", new CreatePlayerCommandFactory(currentPlayer,commands, players, scanner));
         factories.put("g", new SetCurrentPlayerCommandFactory(currentPlayer,commands, players, scanner));
-        factories.put("a", new AddHeroCommandFactory(currentPlayer,commands, players, scanner));
+        factories.put("a", new AddHeroCommandFactory(currentPlayer,commands, heroType, scanner));
         factories.put("m", new CallHeroSkillCommandFactory(currentPlayer,commands, players, scanner));
         factories.put("d", new DeleteHeroCommandFactory(currentPlayer,commands, players, scanner));
         factories.put("s", new ShowPlayerDetailCommandFactory(currentPlayer,commands, players, scanner));
@@ -40,7 +47,11 @@ public class Main {
                         "The current player is " + currentPlayer.getPlayerID() + " " + currentPlayer.getPlayerName());
             }
             System.out.print("Please enter command [ c | g | a | m | d | s | p | t | u | r | l | x ] :-");
-            String InputCom = scanner.next();
+            String InputCom = scanner.nextLine().trim();
+            if(!factories.containsKey(InputCom)){
+                System.out.println("Invalid command: " + InputCom);
+                continue;
+            }
             Command com = factories.get(InputCom).create();
             com.execute();
         }

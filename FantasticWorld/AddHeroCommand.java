@@ -1,18 +1,26 @@
 package FantasticWorld;
 
-
-import java.util.Vector;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class AddHeroCommand implements Command {
     private Player currentPlayer;
     private Stack<Command> commands;
-    private Vector<Player> players;
+    private Class<?>[] heroType;
     private Scanner scanner;
-
+    Hero h;
+    int index;
     public void execute() {
-
+        if(currentPlayer == null) {
+            System.out.println("Please create / select a player first.");
+            return;
+        }
+        if (h == null) {
+            h = new HeroFactory(heroType, scanner).create();
+            index = currentPlayer.getHeroes().size();
+        }
+        currentPlayer.addHero(h);
+        commands.push(this);
     }
 
     public void undo() {
@@ -23,10 +31,10 @@ public class AddHeroCommand implements Command {
         return "AddHero";
     }
 
-    public AddHeroCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players, Scanner scanner) {
+    public AddHeroCommand(Player currentPlayer, Stack<Command> commands, Class<?>[] heroType, Scanner scanner) {
         this.currentPlayer = currentPlayer;
         this.commands = commands;
-        this.players = players;
+        this.heroType = heroType;
         this.scanner = scanner;
     }
 }

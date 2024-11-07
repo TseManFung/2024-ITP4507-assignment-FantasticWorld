@@ -12,16 +12,10 @@ public class CreatePlayerCommand implements Command {
     Player p;
 
     public void execute() {
-        String s;
-        System.out.print("\nPlayer ID:- ");
-        s = scanner.next();
-        p = new Player(s);
-        System.out.print("Player Name:- ");
-        scanner.nextLine();
-        s=scanner.nextLine();
-        p.setPlayerName(s);
+        if (p == null) {
+            p = new PlayerFactory(scanner).create();
+        }
         players.add(p);
-        System.out.println("\nPlayer " + p.getPlayerName() + " is created.");
         currentPlayer = p;
         System.out.println("Current player is changed to " + p.getPlayerID() + ".");
         commands.push(this);
