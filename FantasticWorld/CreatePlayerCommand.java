@@ -26,7 +26,7 @@ public class CreatePlayerCommand implements Command {
     }
 
     public String toString() {
-        return "CreatePlayer";
+        return "Create player, " + p.getPlayerID()+", "+p.getPlayerName();
     }
 
     public CreatePlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,

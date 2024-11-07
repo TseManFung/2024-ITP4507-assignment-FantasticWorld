@@ -15,13 +15,7 @@ public class Main {
         RefCurrentPlayerAdapter currentPlayer = new RefCurrentPlayerAdapter();
         
         boolean playing = true;
-        Class<?>[] heroType;
-        try {
-            heroType = new Class<?>[]{ Class.forName("FantasticWorld.Warrior"), Class.forName("FantasticWorld.Warlock") };
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return;
-        }
+        HeroFactory[] heroType = {new WarriorFactory(), new WarlockFactory()};
         /*
          * c = create player, g = set current player, a = add hero, m = call hero skill,
          * d = delete hero, s = show player, p = display all players, t = change
@@ -53,8 +47,13 @@ public class Main {
                 System.out.println("Invalid command: " + InputCom);
                 continue;
             }
-            Command com = factories.get(InputCom).create();
+            try {
+                Command com = factories.get(InputCom).create();
             com.execute();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            
         }
     }
 

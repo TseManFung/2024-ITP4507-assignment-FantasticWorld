@@ -6,14 +6,14 @@ import java.util.Stack;
 public class AddHeroCommandFactory implements CommandFactory {
     private Player currentPlayer;
     private Stack<Command> commands;
-    private Class<?>[] heroType;
+    private HeroFactory[] heroType;
     private Scanner scanner;
 
     public Command create() {
         return new AddHeroCommand(currentPlayer,commands, heroType, scanner);
     }
 
-    public AddHeroCommandFactory(Player currentPlayer,Stack<Command> commands, Class<?>[] heroType,
+    public AddHeroCommandFactory(Player currentPlayer,Stack<Command> commands, HeroFactory[] heroType,
             Scanner scanner) {
         this.currentPlayer = currentPlayer;
         this.commands = commands;

@@ -12,11 +12,12 @@ public class ShowPlayerDetailCommand implements Command {
     private Scanner scanner;
 
     public void execute() {
-
+        System.out.println("\n");
+        currentPlayer.showPlayerDetails();
     }
 
     public void undo() {
-
+        return;
     }
 
     public String toString() {
