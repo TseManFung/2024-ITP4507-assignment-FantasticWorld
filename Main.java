@@ -12,7 +12,7 @@ public class Main {
         Stack<Command> redos = new Stack<Command>();
         Vector<Player> players = new Vector<Player>();
         HashMap<String, CommandFactory> factories = new HashMap<String, CommandFactory>();
-        Player currentPlayer = null;
+        RefCurrentPlayerAdapter currentPlayer = new RefCurrentPlayerAdapter();
         
         boolean playing = true;
         Class<?>[] heroType;
@@ -43,7 +43,7 @@ public class Main {
             System.out.println("\nFantastic World (FW)");
             System.out.println(
                     "c = create player, g = set current player, a = add hero, m = call hero skill, d = delete hero, s = show player, p = display all players, t = change player’s name, u = undo, r = redo, l = list undo/redo, x = exit system");
-            if (currentPlayer != null) {
+            if (currentPlayer.getCurrentPlayer() != null) {
                 System.out.println(
                         "The current player is " + currentPlayer.getPlayerID() + " " + currentPlayer.getPlayerName());
             }
