@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class ShowPlayerDetailCommand implements Command {
+    private Player currentPlayer;
     private Stack<Command> commands;
     private HashMap<Player, ArrayList<Hero>> playerHeroes;
     private Scanner scanner;
@@ -22,8 +23,9 @@ public class ShowPlayerDetailCommand implements Command {
         return "ShowPlayerDetail";
     }
 
-    public ShowPlayerDetailCommand(Stack<Command> commands, HashMap<Player, ArrayList<Hero>> playerHeroes,
+    public ShowPlayerDetailCommand(Player currentPlayer,Stack<Command> commands, HashMap<Player, ArrayList<Hero>> playerHeroes,
             Scanner scanner) {
+        this.currentPlayer = currentPlayer;
         this.commands = commands;
         this.playerHeroes = playerHeroes;
         this.scanner = scanner;

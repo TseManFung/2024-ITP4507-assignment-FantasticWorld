@@ -6,16 +6,18 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class ChangePlayerNameCommandFactory implements CommandFactory {
+    private Player currentPlayer;
     private Stack<Command> commands;
     private HashMap<Player, ArrayList<Hero>> playerHeroes;
     private Scanner scanner;
 
     public Command create() {
-        return new ChangePlayerNameCommand(commands, playerHeroes, scanner);
+        return new ChangePlayerNameCommand(currentPlayer,commands, playerHeroes, scanner);
     }
 
-    public ChangePlayerNameCommandFactory(Stack<Command> commands, HashMap<Player, ArrayList<Hero>> playerHeroes,
+    public ChangePlayerNameCommandFactory(Player currentPlayer,Stack<Command> commands, HashMap<Player, ArrayList<Hero>> playerHeroes,
             Scanner scanner) {
+        this.currentPlayer = currentPlayer;
         this.commands = commands;
         this.playerHeroes = playerHeroes;
         this.scanner = scanner;

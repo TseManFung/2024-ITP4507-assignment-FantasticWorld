@@ -6,16 +6,18 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class CreatePlayerCommandFactory implements CommandFactory {
+    private Player currentPlayer;
     private Stack<Command> commands;
     private HashMap<Player, ArrayList<Hero>> playerHeroes;
     private Scanner scanner;
 
     public Command create() {
-        return new CreatePlayerCommand(commands, playerHeroes, scanner);
+        return new CreatePlayerCommand(currentPlayer,commands, playerHeroes, scanner);
     }
 
-    public CreatePlayerCommandFactory(Stack<Command> commands, HashMap<Player, ArrayList<Hero>> playerHeroes,
+    public CreatePlayerCommandFactory(Player currentPlayer,Stack<Command> commands, HashMap<Player, ArrayList<Hero>> playerHeroes,
             Scanner scanner) {
+        this.currentPlayer = currentPlayer;
         this.commands = commands;
         this.playerHeroes = playerHeroes;
         this.scanner = scanner;
