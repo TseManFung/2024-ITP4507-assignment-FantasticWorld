@@ -1,4 +1,5 @@
 package FantasticWorld;
+
 import java.util.EmptyStackException;
 import java.util.Stack;
 
@@ -10,7 +11,7 @@ public class RedoCommand implements Command {
             Command c = redos.pop();
             c.execute();
             commands.push(c);
-        } catch (EmptyStackException  e) {
+        } catch (EmptyStackException e) {
             System.out.println("No commands to redo");
         }
     }
@@ -19,7 +20,7 @@ public class RedoCommand implements Command {
 
     }
 
-    public RedoCommand(Stack commands, Stack redos) {
+    public RedoCommand(Stack<Command> commands, Stack<Command> redos) {
         this.commands = commands;
         this.redos = redos;
     }
