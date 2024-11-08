@@ -57,6 +57,6 @@ public class RefCurrentPlayerAdapter extends Player {
     }
 
     public RefCurrentPlayerAdapter() {
-        super(null);
+        super(null,null);
     }
 }

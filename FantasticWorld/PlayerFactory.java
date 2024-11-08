@@ -4,13 +4,12 @@ public class PlayerFactory implements Factory {
     private Scanner scanner;
     public Player create() {
         Player p;
-        String s;
+        String id,name;
         System.out.print("\nPlayer ID:- ");
-        s = scanner.nextLine().trim();
-        p = new Player(s);
+        id = scanner.nextLine().trim();
         System.out.print("Player Name:- ");
-        s = scanner.nextLine().trim();
-        p.setPlayerName(s);
+        name = scanner.nextLine().trim();
+        p = new Player(id,name);
         System.out.println("\nPlayer " + p.getPlayerName() + " is created.");
         return p;
     }
