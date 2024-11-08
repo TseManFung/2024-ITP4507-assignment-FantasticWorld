@@ -1,7 +1,7 @@
 package FantasticWorld;
 import java.util.Stack;
 
-public class WarlockMemeto extends CallHeroMemeto {
+public class WarlockMemeto extends HeroMemeto {
     private Stack<Integer> mp = new Stack<Integer>();
     public WarlockMemeto(Warlock warlock) {
         super(warlock);

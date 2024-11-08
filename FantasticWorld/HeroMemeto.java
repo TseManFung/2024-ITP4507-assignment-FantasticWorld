@@ -2,7 +2,7 @@ package FantasticWorld;
 
 import java.util.Stack;
 
-public abstract class CallHeroMemeto implements Memeto {
+public abstract class HeroMemeto implements Memeto {
     private Hero hero;
     private Stack<Integer> hp = new Stack<Integer>(), damage = new Stack<Integer>();
 
@@ -16,7 +16,7 @@ public abstract class CallHeroMemeto implements Memeto {
         damage.push(hero.getDamage());
     }
 
-    public CallHeroMemeto(Hero hero) {
+    public HeroMemeto(Hero hero) {
         this.hero = hero;
         save();
     }
