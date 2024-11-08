@@ -9,24 +9,25 @@ public class CreatePlayerCommand implements Command {
     private Stack<Command> commands;
     private Vector<Player> players;
     private Scanner scanner;
-    Player p;
+    Player p, lastPlayer;
 
     public void execute() {
         if (p == null) {
             p = new PlayerFactory(scanner).create();
+            lastPlayer = ((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer();
         }
         players.add(p);
-        ((RefCurrentPlayerAdapter)currentPlayer).setCurrentPlayer(p);
-        System.out.println("Current player is changed to " + p.getPlayerID() + ".");
+        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p);
         commands.push(this);
     }
 
     public void undo() {
-
+        players.remove(p);
+        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer);
     }
 
     public String toString() {
-        return "Create player, " + p.getPlayerID()+", "+p.getPlayerName();
+        return "Create player, " + p.getPlayerID() + ", " + p.getPlayerName();
     }
 
     public CreatePlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,

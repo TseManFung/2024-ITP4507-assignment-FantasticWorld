@@ -7,13 +7,13 @@ public class ListUndoRedoCommand implements Command {
 
     public void execute() {
         System.out.println("\nUndo List:");
-        for (Command c : commands) {
-            System.out.println(c.toString());
+        for (int i = commands.size() - 1; i >= 0; i--) {
+            System.out.println(commands.get(i).toString());
         }
         System.out.println("-- End of undo list --");
         System.out.println("Redo List:");
-        for (Command c : redos) {
-            System.out.println(c.toString());
+        for (int i = redos.size() - 1; i >= 0; i--) {
+            System.out.println(redos.get(i).toString());
         }
         System.out.println("-- End of redo list --");
     }

@@ -1,6 +1,5 @@
 package FantasticWorld;
 
-
 import java.util.Vector;
 import java.util.Scanner;
 import java.util.Stack;
@@ -10,29 +9,31 @@ public class SetCurrentPlayerCommand implements Command {
     private Stack<Command> commands;
     private Vector<Player> players;
     private Scanner scanner;
+    Player lastPlayer;
 
     public void execute() {
         System.out.print("\nPlease input player ID:- ");
         String playerID = scanner.nextLine().trim();
         for (Player p : players) {
             if (p.getPlayerID().equals(playerID)) {
-                currentPlayer = p;
-                System.out.println("Changed current player to " + p.getPlayerID() + ".");
+                lastPlayer = ((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer();
+                ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p);
                 commands.push(this);
                 return;
             }
         }
+        System.out.println("Player " + playerID + " is not found!!");
     }
 
     public void undo() {
-
+        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer);
     }
 
     public String toString() {
         return "SetCurrentPlayer";
     }
 
-    public SetCurrentPlayerCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players,
+    public SetCurrentPlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,
             Scanner scanner) {
         this.currentPlayer = currentPlayer;
         this.commands = commands;

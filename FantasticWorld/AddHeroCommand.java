@@ -9,17 +9,20 @@ public class AddHeroCommand implements Command {
     private HeroFactory[] heroType;
     private Scanner scanner;
     Hero h;
-    int index;
+    // int index;
+    Player targetPlayer;
+
     public void execute() {
-        if(currentPlayer == null) {
+        if (currentPlayer == null) {
             System.out.println("Please create / select a player first.");
             return;
         }
         if (h == null) {
+            targetPlayer = currentPlayer;
             String s;
             System.out.println("\nPlease input hero information (id, name):- ");
             s = scanner.nextLine();
-            String[] heroInfo = s.split(",",2);
+            String[] heroInfo = s.split(",", 2);
             System.out.print("Hero Type (");
             for (int i = 0; i < heroType.length; i++) {
                 System.out.print((i + 1) + " = " + heroType[i]);
@@ -32,20 +35,21 @@ public class AddHeroCommand implements Command {
             if (intHeroType < 1 || intHeroType > heroType.length) {
                 throw new IllegalArgumentException("Invalid hero type.");
             }
-            h = heroType[intHeroType-1].create(heroInfo);
-            index = currentPlayer.getHeroes().size();
+            h = heroType[intHeroType - 1].create(heroInfo);
+            // index = currentPlayer.getHeroes().size();
         }
-        currentPlayer.addHero(h);
+        targetPlayer.addHero(h);
         System.out.println("Hero is added.");
         commands.push(this);
     }
 
     public void undo() {
-
+        targetPlayer.removeHero(h);
+        
     }
 
     public String toString() {
-        return "Add hero, "+h.getHeroID()+", "+h.getHeroName()+", "+h.getClass().getSimpleName();
+        return "Add hero, " + h.getHeroID() + ", " + h.getHeroName() + ", " + h.getClass().getSimpleName();
     }
 
     public AddHeroCommand(Player currentPlayer, Stack<Command> commands, HeroFactory[] heroType, Scanner scanner) {

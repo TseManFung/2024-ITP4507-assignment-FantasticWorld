@@ -9,6 +9,7 @@ public class RedoCommand implements Command {
     public void execute() {
         try {
             Command c = redos.pop();
+            System.out.println("Command (" + c.toString() + ") is redone.");
             c.execute();
             commands.push(c);
         } catch (EmptyStackException e) {
