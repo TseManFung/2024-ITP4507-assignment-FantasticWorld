@@ -1,5 +1,6 @@
 package FantasticWorld;
 
-public interface Memoto {
+public interface Memeto {
     public void restore();
+    public void save();
 }
