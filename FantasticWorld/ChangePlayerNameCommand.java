@@ -10,13 +10,19 @@ public class ChangePlayerNameCommand implements Command {
     private Stack<Command> commands;
     private Vector<Player> players;
     private Scanner scanner;
+    private PlayerMemento playerMemento;
 
     public void execute() {
-
+        System.out.print("\nPlease input new name of the current player:- ");
+        String newPlayerName = scanner.nextLine().trim();
+        playerMemento = new PlayerMemento(((RefCurrentPlayerAdapter)currentPlayer).getCurrentPlayer());
+        currentPlayer.setPlayerName(newPlayerName);
+        System.out.println("Player’s name is updated.");
+        commands.push(this);
     }
 
     public void undo() {
-
+        playerMemento.restore();
     }
 
     public String toString() {

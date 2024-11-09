@@ -2,6 +2,7 @@ package FantasticWorld;
 
 
 import java.util.Vector;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -10,13 +11,35 @@ public class CallHeroSkillCommand implements Command {
     private Stack<Command> commands;
     private Vector<Player> players;
     private Scanner scanner;
+    private HeroMemento heroMemento;
 
     public void execute() {
+        System.out.print("\nPlease input hero ID:- ");
+        String heroID = scanner.nextLine().trim();
+        for (Hero hero: currentPlayer.getHeroes()){
+            if (hero.getHeroID().equals(heroID)){
+                String heroClass = hero.getClass().getSimpleName();
+                try {
+                    heroMemento = (HeroMemento) Class.forName("FantasticWorld."+heroClass+"Memento").getConstructor(Class.forName("FantasticWorld."+heroClass)).newInstance(hero);
+                    heroMemento.save();
+                } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+                        | InvocationTargetException | NoSuchMethodException | SecurityException
+                        | ClassNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                hero.callSkill();
+                System.out.println(hero.getHeroID()+" "+hero.getHeroName()+"’s attributes are changed to:");
+                hero.showHeroStatus();
+                commands.push(this);
+                return;
+            }
+        }
 
     }
 
     public void undo() {
-
+        heroMemento.restore();
     }
 
     public String toString() {

@@ -22,14 +22,13 @@ public class DisplayAllPlayersCommand implements Command {
 
     }
 
-    public String toString() {
-        return "DisplayAllPlayers";
-    }
-
     public DisplayAllPlayersCommand(Stack<Command> commands, Vector<Player> players,
             Scanner scanner) {
         this.commands = commands;
         this.players = players;
         this.scanner = scanner;
+    }
+    public String toString() {
+        return "DisplayAllPlayers";
     }
 }
