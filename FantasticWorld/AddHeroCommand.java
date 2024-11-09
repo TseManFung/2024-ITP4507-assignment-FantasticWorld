@@ -3,7 +3,7 @@ package FantasticWorld;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class AddHeroCommand implements Command {
+public class AddHeroCommand extends RecordString implements Command {
     private Player currentPlayer;
     private Stack<Command> commands;
     private HeroFactory[] heroType;

@@ -1,9 +1,8 @@
 package FantasticWorld;
 
-public abstract class HeroMemento implements Memento {
+public abstract class HeroMemento extends RecordString implements Memento {
     private Hero hero;
     private int hp, damage;
-
     public void restore() {
         hero.setHp(hp);
         hero.setDamage(damage);
@@ -30,4 +29,5 @@ public abstract class HeroMemento implements Memento {
     public int getDamage() {
         return damage;
     }
+    public abstract void setRecordString();
 }

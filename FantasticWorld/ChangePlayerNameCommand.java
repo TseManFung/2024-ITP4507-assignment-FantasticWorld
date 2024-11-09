@@ -5,7 +5,7 @@ import java.util.Vector;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class ChangePlayerNameCommand implements Command {
+public class ChangePlayerNameCommand extends RecordString implements Command {
     private Player currentPlayer;
     private Stack<Command> commands;
     private Vector<Player> players;

@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class CallHeroSkillCommand implements Command {
+public class CallHeroSkillCommand extends RecordString implements Command {
     private Player currentPlayer;
     private Stack<Command> commands;
     private Vector<Player> players;
@@ -27,8 +27,10 @@ public class CallHeroSkillCommand implements Command {
                         | ClassNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
+                    return;
                 }
                 hero.callSkill();
+                heroMemento.setRecordString();
                 System.out.println(hero.getHeroID()+" "+hero.getHeroName()+"’s attributes are changed to:");
                 hero.showHeroStatus();
                 commands.push(this);
@@ -43,7 +45,7 @@ public class CallHeroSkillCommand implements Command {
     }
 
     public String toString() {
-        return "CallHeroSkill";
+        return "CallHeroSkill, "+heroMemento.getRecordString();
     }
 
     public CallHeroSkillCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players,

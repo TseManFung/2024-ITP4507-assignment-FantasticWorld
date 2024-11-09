@@ -4,7 +4,7 @@ import java.util.Vector;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class DeleteHeroCommand implements Command {
+public class DeleteHeroCommand extends RecordString implements Command {
     private Player currentPlayer;
     private Stack<Command> commands;
     private Vector<Player> players;

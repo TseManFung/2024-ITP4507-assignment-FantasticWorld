@@ -2,7 +2,6 @@ package FantasticWorld;
 
 public class WarriorMemento extends HeroMemento {
     private int defencePoint;
-
     public WarriorMemento(Warrior warrior) {
         super(warrior);
     }
@@ -22,4 +21,11 @@ public class WarriorMemento extends HeroMemento {
     public int getDefencePoint() {
         return defencePoint;
     }
+    public void setRecordString() {
+        Hero h = this.getHero();
+        setRecordString(h.getHeroID() + 
+        ", "+h.getHeroName() + ", Warrior, Hp: "+getHp() + 
+        ", Damage: "+getDamage() + ", Defence: "+((Warrior)h).getDefencePoint());
+    }
+
 }

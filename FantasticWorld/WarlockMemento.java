@@ -17,11 +17,17 @@ public class WarlockMemento extends HeroMemento {
     public void save() {
         super.save();
         mp = ((Warlock) this.getHero()).getMp();
+        
     }
 
     public int getMp() {
         return mp;
     }
 
-
+    public void setRecordString() {
+        Hero h = this.getHero();
+        setRecordString(h.getHeroID() + 
+        ", "+h.getHeroName() + ", Warlock, Hp: "+getHp() + 
+        ", Damage: "+getDamage() + ", Mp: "+((Warlock)h).getMp());
+    }
 }
