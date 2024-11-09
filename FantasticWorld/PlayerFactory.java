@@ -7,7 +7,7 @@ public class PlayerFactory implements Factory {
         String id,name;
         System.out.print("\nPlayer ID:- ");
         id = scanner.nextLine().trim();
-        System.out.print("Player Name:- ");
+        System.out.print("\nPlayer Name:- ");
         name = scanner.nextLine().trim();
         p = new Player(id,name);
         System.out.println("\nPlayer " + p.getPlayerName() + " is created.");

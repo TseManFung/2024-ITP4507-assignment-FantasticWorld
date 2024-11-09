@@ -15,6 +15,7 @@ public class DeleteHeroCommand extends RecordString implements Command {
     public void execute() {
         System.out.print("\nPlease input hero ID:- ");
         String heroID = scanner.nextLine().trim();
+        System.out.println();
         for (Hero h : currentPlayer.getHeroes()) {
             if (h.getHeroID().equals(heroID)) {
                 targetPlayer = ((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer();

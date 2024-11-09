@@ -12,7 +12,7 @@ public class ShowPlayerDetailCommand implements Command {
     private Scanner scanner;
 
     public void execute() {
-        System.out.println("\n");
+        System.out.println();
         currentPlayer.showPlayerDetails();
     }
 

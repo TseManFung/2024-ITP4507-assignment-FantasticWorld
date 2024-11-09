@@ -7,6 +7,7 @@ public class RedoCommand implements Command {
     private Stack<Command> commands, redos;
 
     public void execute() {
+        System.out.println();
         try {
             Command c = redos.pop();
             System.out.println("Command (" + c.toString() + ") is redone.");

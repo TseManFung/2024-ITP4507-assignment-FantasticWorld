@@ -42,9 +42,6 @@ public class Main {
                         "The current player is " + currentPlayer.getPlayerID() + " " + currentPlayer.getPlayerName());
             }
             System.out.print("Please enter command [ c | g | a | m | d | s | p | t | u | r | l | x ] :-");
-            /* if (currentPlayer.getCurrentPlayer() != null) {
-                System.out.print(
-                        "\nThe current player is " + currentPlayer.getPlayerID() + " " + currentPlayer.getPlayerName());} */
             String InputCom = scanner.nextLine().trim();
             if(!factories.containsKey(InputCom)){
                 System.out.println("Invalid command: " + InputCom);

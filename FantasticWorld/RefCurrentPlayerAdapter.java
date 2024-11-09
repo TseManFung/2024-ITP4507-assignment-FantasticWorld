@@ -9,11 +9,10 @@ public class RefCurrentPlayerAdapter extends Player {
         return currentPlayer;
     }
 
-    public void setCurrentPlayer(Player currentPlayer) {
+    public void setCurrentPlayer(Player currentPlayer,String msg) {
         this.currentPlayer = currentPlayer;
         if (currentPlayer != null) {
-            System.out.println("Changed current player to " + this.currentPlayer.getPlayerID() + ".");
-            return;
+            System.out.println(msg + this.currentPlayer.getPlayerID() + ".");
         }
     }
 

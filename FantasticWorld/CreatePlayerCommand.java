@@ -10,25 +10,25 @@ public class CreatePlayerCommand extends RecordString implements Command {
     private Vector<Player> players;
     private Scanner scanner;
     Player p, lastPlayer;
-
+    String msg = "Current player is changed to ";
     public void execute() {
         if (p == null) {
             p = new PlayerFactory(scanner).create();
             lastPlayer = ((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer();
         }
         players.add(p);
-        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p);
+        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p,msg);
         setRecordString("Create player, " + p.getPlayerID() + ", " + p.getPlayerName());
         commands.push(this);
     }
 
     public void undo() {
         players.remove(p);
-        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer);
+        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer,msg);
     }
     public void redo() {
         players.add(p);
-        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p);
+        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p,msg);
     }
 
     public CreatePlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,

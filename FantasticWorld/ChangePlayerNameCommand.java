@@ -20,7 +20,7 @@ public class ChangePlayerNameCommand extends RecordString implements Command {
         playerMemento = new PlayerMemento(player);
         playerMemento.save();
         player.setPlayerName(newPlayerName);
-        System.out.println("Player's name is updated.");
+        System.out.println("\nPlayer's name is updated.");
         setRecordString("Change player's name, "+ player.getPlayerID() +", "+player.getPlayerName());
         commands.push(this);
     }

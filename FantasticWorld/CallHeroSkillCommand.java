@@ -16,6 +16,7 @@ public class CallHeroSkillCommand extends RecordString implements Command {
     public void execute() {
         System.out.print("\nPlease input hero ID:- ");
         String heroID = scanner.nextLine().trim();
+        System.out.println();
         for (Hero hero : currentPlayer.getHeroes()) {
             if (hero.getHeroID().equals(heroID)) {
                 h = hero;
