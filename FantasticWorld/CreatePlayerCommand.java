@@ -18,16 +18,13 @@ public class CreatePlayerCommand extends RecordString implements Command {
         }
         players.add(p);
         ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p);
+        setRecordString("Create player, " + p.getPlayerID() + ", " + p.getPlayerName());
         commands.push(this);
     }
 
     public void undo() {
         players.remove(p);
         ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer);
-    }
-
-    public String toString() {
-        return "Create player, " + p.getPlayerID() + ", " + p.getPlayerName();
     }
 
     public CreatePlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,

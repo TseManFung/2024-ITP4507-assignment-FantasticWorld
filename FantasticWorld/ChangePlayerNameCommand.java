@@ -17,16 +17,13 @@ public class ChangePlayerNameCommand extends RecordString implements Command {
         String newPlayerName = scanner.nextLine().trim();
         playerMemento = new PlayerMemento(((RefCurrentPlayerAdapter)currentPlayer).getCurrentPlayer());
         currentPlayer.setPlayerName(newPlayerName);
-        System.out.println("Player’s name is updated.");
+        System.out.println("Player's name is updated.");
+        setRecordString("Change player's name, "+ currentPlayer.getPlayerID() +", "+currentPlayer.getPlayerName());
         commands.push(this);
     }
 
     public void undo() {
         playerMemento.restore();
-    }
-
-    public String toString() {
-        return "ChangePlayerName";
     }
 
     public ChangePlayerNameCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players,

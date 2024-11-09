@@ -4,7 +4,7 @@ import java.util.Vector;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class SetCurrentPlayerCommand implements Command {
+public class SetCurrentPlayerCommand extends RecordString implements Command {
     Player currentPlayer;
     private Stack<Command> commands;
     private Vector<Player> players;
@@ -18,7 +18,8 @@ public class SetCurrentPlayerCommand implements Command {
             if (p.getPlayerID().equals(playerID)) {
                 lastPlayer = ((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer();
                 ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p);
-                commands.push(this);
+                setRecordString("Set current player, " + p.getPlayerID() + ", " + p.getPlayerName());
+                //commands.push(this);
                 return;
             }
         }
@@ -27,10 +28,6 @@ public class SetCurrentPlayerCommand implements Command {
 
     public void undo() {
         ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer);
-    }
-
-    public String toString() {
-        return "SetCurrentPlayer";
     }
 
     public SetCurrentPlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,

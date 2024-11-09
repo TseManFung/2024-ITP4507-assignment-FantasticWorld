@@ -31,8 +31,10 @@ public class CallHeroSkillCommand extends RecordString implements Command {
                 }
                 hero.callSkill();
                 heroMemento.setRecordString();
-                System.out.println(hero.getHeroID()+" "+hero.getHeroName()+"’s attributes are changed to:");
+                System.out.println(hero.getHeroID()+" "+hero.getHeroName()+"'s attributes are changed to:");
                 hero.showHeroStatus();
+                heroMemento.setRecordString();
+                setRecordString("CallHeroSkill, "+heroMemento.getRecordString());
                 commands.push(this);
                 return;
             }
@@ -42,10 +44,6 @@ public class CallHeroSkillCommand extends RecordString implements Command {
 
     public void undo() {
         heroMemento.restore();
-    }
-
-    public String toString() {
-        return "CallHeroSkill, "+heroMemento.getRecordString();
     }
 
     public CallHeroSkillCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players,

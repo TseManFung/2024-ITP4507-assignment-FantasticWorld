@@ -27,7 +27,7 @@ public class WarlockMemento extends HeroMemento {
     public void setRecordString() {
         Hero h = this.getHero();
         setRecordString(h.getHeroID() + 
-        ", "+h.getHeroName() + ", Warlock, Hp: "+getHp() + 
-        ", Damage: "+getDamage() + ", Mp: "+((Warlock)h).getMp());
+        ", "+h.getHeroName() + ", Warlock, Hp: "+h.getHp() + 
+        ", Damage: "+h.getDamage() + ", Mp: "+((Warlock)h).getMp());
     }
 }

@@ -40,16 +40,13 @@ public class AddHeroCommand extends RecordString implements Command {
         }
         targetPlayer.addHero(h);
         System.out.println("Hero is added.");
+        setRecordString("Add hero, " + h.getHeroID() + ", " + h.getHeroName() + ", " + h.getClass().getSimpleName());
         commands.push(this);
     }
 
     public void undo() {
         targetPlayer.removeHero(h);
         
-    }
-
-    public String toString() {
-        return "Add hero, " + h.getHeroID() + ", " + h.getHeroName() + ", " + h.getClass().getSimpleName();
     }
 
     public AddHeroCommand(Player currentPlayer, Stack<Command> commands, HeroFactory[] heroType, Scanner scanner) {

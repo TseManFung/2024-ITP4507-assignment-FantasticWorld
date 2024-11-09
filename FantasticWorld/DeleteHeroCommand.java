@@ -21,6 +21,7 @@ public class DeleteHeroCommand extends RecordString implements Command {
                 targetPlayer.removeHero(h);
                 hero = h;
                 System.out.println(h.getHeroID() + " " + h.getHeroName() + " is deleted.");
+                setRecordString("Delete hero, "+h.getHeroID());
                 commands.push(this);
                 return;
             }
@@ -30,10 +31,6 @@ public class DeleteHeroCommand extends RecordString implements Command {
 
     public void undo() {
         targetPlayer.addHero(hero);
-    }
-
-    public String toString() {
-        return "DeleteHero";
     }
 
     public DeleteHeroCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players, Scanner scanner) {

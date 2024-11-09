@@ -22,10 +22,6 @@ public class ListUndoRedoCommand implements Command {
         return;
     }
 
-    public String toString() {
-        return "listUndoRedo";
-    }
-
     public ListUndoRedoCommand(Stack<Command> commands, Stack<Command> redos) {
         this.commands = commands;
         this.redos = redos;

@@ -15,7 +15,6 @@ public class DisplayAllPlayersCommand implements Command {
         for (Player p : players) {
             System.out.println("Player " + p.getPlayerName() + " (" + p.getPlayerID() + ")");
         }
-        commands.push(this);
     }
 
     public void undo() {
@@ -27,8 +26,5 @@ public class DisplayAllPlayersCommand implements Command {
         this.commands = commands;
         this.players = players;
         this.scanner = scanner;
-    }
-    public String toString() {
-        return "DisplayAllPlayers";
     }
 }

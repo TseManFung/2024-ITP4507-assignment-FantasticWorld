@@ -20,10 +20,6 @@ public class ShowPlayerDetailCommand implements Command {
         return;
     }
 
-    public String toString() {
-        return "ShowPlayerDetail";
-    }
-
     public ShowPlayerDetailCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players,
             Scanner scanner) {
         this.currentPlayer = currentPlayer;

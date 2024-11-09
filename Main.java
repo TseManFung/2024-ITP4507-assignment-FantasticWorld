@@ -19,7 +19,7 @@ public class Main {
         /*
          * c = create player, g = set current player, a = add hero, m = call hero skill,
          * d = delete hero, s = show player, p = display all players, t = change
-         * player’s name, u = undo, r = redo, l = list undo/redo, x = exit system
+         * player's name, u = undo, r = redo, l = list undo/redo, x = exit system
          */
         factories.put("c", new CreatePlayerCommandFactory(currentPlayer,commands, players, scanner));
         factories.put("g", new SetCurrentPlayerCommandFactory(currentPlayer,commands, players, scanner));
@@ -36,12 +36,15 @@ public class Main {
         while (playing) {
             System.out.println("\nFantastic World (FW)");
             System.out.println(
-                    "c = create player, g = set current player, a = add hero, m = call hero skill, d = delete hero, s = show player, p = display all players, t = change player’s name, u = undo, r = redo, l = list undo/redo, x = exit system");
+                    "c = create player, g = set current player, a = add hero, m = call hero skill, d = delete hero, s = show player, p = display all players, t = change player's name, u = undo, r = redo, l = list undo/redo, x = exit system");
             if (currentPlayer.getCurrentPlayer() != null) {
                 System.out.println(
                         "The current player is " + currentPlayer.getPlayerID() + " " + currentPlayer.getPlayerName());
             }
             System.out.print("Please enter command [ c | g | a | m | d | s | p | t | u | r | l | x ] :-");
+            /* if (currentPlayer.getCurrentPlayer() != null) {
+                System.out.print(
+                        "\nThe current player is " + currentPlayer.getPlayerID() + " " + currentPlayer.getPlayerName());} */
             String InputCom = scanner.nextLine().trim();
             if(!factories.containsKey(InputCom)){
                 System.out.println("Invalid command: " + InputCom);

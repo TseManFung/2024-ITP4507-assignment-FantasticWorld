@@ -8,4 +8,7 @@ public abstract class RecordString {
     public String getRecordString() {
         return recordString;
     }
+    public String toString() {
+        return getRecordString();
+    }
 }

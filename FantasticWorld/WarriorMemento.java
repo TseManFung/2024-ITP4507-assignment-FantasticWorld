@@ -24,8 +24,8 @@ public class WarriorMemento extends HeroMemento {
     public void setRecordString() {
         Hero h = this.getHero();
         setRecordString(h.getHeroID() + 
-        ", "+h.getHeroName() + ", Warrior, Hp: "+getHp() + 
-        ", Damage: "+getDamage() + ", Defence: "+((Warrior)h).getDefencePoint());
+        ", "+h.getHeroName() + ", Warrior, Hp: "+h.getHp() + 
+        ", Damage: "+h.getDamage() + ", Defence: "+((Warrior)h).getDefencePoint());
     }
 
 }

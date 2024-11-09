@@ -6,7 +6,4 @@ public class ExitCommand implements Command {
     public void undo(){
         
     }
-    public String toString(){
-        return "Exit";
-    }
 } 
