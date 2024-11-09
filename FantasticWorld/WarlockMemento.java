@@ -30,4 +30,11 @@ public class WarlockMemento extends HeroMemento {
         ", "+h.getHeroName() + ", Warlock, Hp: "+h.getHp() + 
         ", Damage: "+h.getDamage() + ", Mp: "+((Warlock)h).getMp());
     }
+    public int[] getHeroData() {
+        int[] data = new int[3];
+        data[0] = this.getHp();
+        data[1] = this.getDamage();
+        data[2] = this.getMp();
+        return data;
+    }
 }

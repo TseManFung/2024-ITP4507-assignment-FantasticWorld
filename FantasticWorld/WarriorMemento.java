@@ -27,5 +27,11 @@ public class WarriorMemento extends HeroMemento {
         ", "+h.getHeroName() + ", Warrior, Hp: "+h.getHp() + 
         ", Damage: "+h.getDamage() + ", Defence: "+((Warrior)h).getDefencePoint());
     }
-
+    public int[] getHeroData() {
+        int[] data = new int[3];
+        data[0] = this.getHp();
+        data[1] = this.getDamage();
+        data[2] = this.getDefencePoint();
+        return data;
+    }
 }

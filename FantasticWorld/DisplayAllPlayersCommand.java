@@ -27,4 +27,8 @@ public class DisplayAllPlayersCommand implements Command {
         this.players = players;
         this.scanner = scanner;
     }
+
+    @Override
+    public void redo() {
+    }
 }

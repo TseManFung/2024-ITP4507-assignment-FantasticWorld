@@ -30,4 +30,5 @@ public abstract class HeroMemento extends RecordString implements Memento {
         return damage;
     }
     public abstract void setRecordString();
+    public abstract int[] getHeroData();
 }

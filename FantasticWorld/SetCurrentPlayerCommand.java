@@ -9,13 +9,14 @@ public class SetCurrentPlayerCommand extends RecordString implements Command {
     private Stack<Command> commands;
     private Vector<Player> players;
     private Scanner scanner;
-    Player lastPlayer;
+    Player player,lastPlayer;
 
     public void execute() {
         System.out.print("\nPlease input player ID:- ");
         String playerID = scanner.nextLine().trim();
         for (Player p : players) {
             if (p.getPlayerID().equals(playerID)) {
+                player = p;
                 lastPlayer = ((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer();
                 ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p);
                 setRecordString("Set current player, " + p.getPlayerID() + ", " + p.getPlayerName());
@@ -28,6 +29,9 @@ public class SetCurrentPlayerCommand extends RecordString implements Command {
 
     public void undo() {
         ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer);
+    }
+    public void redo() {
+        ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(player);
     }
 
     public SetCurrentPlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,

@@ -13,31 +13,29 @@ public class AddHeroCommand extends RecordString implements Command {
     Player targetPlayer;
 
     public void execute() {
-        if (currentPlayer == null) {
+        if (((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer() == null) {
             System.out.println("Please create / select a player first.");
             return;
         }
-        if (h == null) {
-            targetPlayer = currentPlayer;
-            String s;
-            System.out.println("\nPlease input hero information (id, name):- ");
-            s = scanner.nextLine();
-            String[] heroInfo = s.split(",", 2);
-            System.out.print("Hero Type (");
-            for (int i = 0; i < heroType.length; i++) {
-                System.out.print((i + 1) + " = " + heroType[i]);
-                if (i < heroType.length - 1) {
-                    System.out.print(" | ");
-                }
+        targetPlayer = ((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer();
+        String s;
+        System.out.println("\nPlease input hero information (id, name):- ");
+        s = scanner.nextLine();
+        String[] heroInfo = s.split(",", 2);
+        System.out.print("Hero Type (");
+        for (int i = 0; i < heroType.length; i++) {
+            System.out.print((i + 1) + " = " + heroType[i]);
+            if (i < heroType.length - 1) {
+                System.out.print(" | ");
             }
-            System.out.println("):- ");
-            int intHeroType = Integer.parseInt(scanner.nextLine());
-            if (intHeroType < 1 || intHeroType > heroType.length) {
-                throw new IllegalArgumentException("Invalid hero type.");
-            }
-            h = heroType[intHeroType - 1].create(heroInfo);
-            // index = currentPlayer.getHeroes().size();
         }
+        System.out.println("):- ");
+        int intHeroType = Integer.parseInt(scanner.nextLine());
+        if (intHeroType < 1 || intHeroType > heroType.length) {
+            throw new IllegalArgumentException("Invalid hero type.");
+        }
+        h = heroType[intHeroType - 1].create(heroInfo);
+        // index = currentPlayer.getHeroes().size();
         targetPlayer.addHero(h);
         System.out.println("Hero is added.");
         setRecordString("Add hero, " + h.getHeroID() + ", " + h.getHeroName() + ", " + h.getClass().getSimpleName());
@@ -46,7 +44,7 @@ public class AddHeroCommand extends RecordString implements Command {
 
     public void undo() {
         targetPlayer.removeHero(h);
-        
+
     }
 
     public AddHeroCommand(Player currentPlayer, Stack<Command> commands, HeroFactory[] heroType, Scanner scanner) {
@@ -54,5 +52,12 @@ public class AddHeroCommand extends RecordString implements Command {
         this.commands = commands;
         this.heroType = heroType;
         this.scanner = scanner;
+    }
+
+    @Override
+    public void redo() {
+        targetPlayer.addHero(h);
+        System.out.println("Hero is added.");
+        setRecordString("Add hero, " + h.getHeroID() + ", " + h.getHeroName() + ", " + h.getClass().getSimpleName());
     }
 }

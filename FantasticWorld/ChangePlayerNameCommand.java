@@ -11,19 +11,29 @@ public class ChangePlayerNameCommand extends RecordString implements Command {
     private Vector<Player> players;
     private Scanner scanner;
     private PlayerMemento playerMemento;
+    private Player player;
 
     public void execute() {
         System.out.print("\nPlease input new name of the current player:- ");
         String newPlayerName = scanner.nextLine().trim();
-        playerMemento = new PlayerMemento(((RefCurrentPlayerAdapter)currentPlayer).getCurrentPlayer());
-        currentPlayer.setPlayerName(newPlayerName);
+        player = ((RefCurrentPlayerAdapter)currentPlayer).getCurrentPlayer();
+        playerMemento = new PlayerMemento(player);
+        playerMemento.save();
+        player.setPlayerName(newPlayerName);
         System.out.println("Player's name is updated.");
-        setRecordString("Change player's name, "+ currentPlayer.getPlayerID() +", "+currentPlayer.getPlayerName());
+        setRecordString("Change player's name, "+ player.getPlayerID() +", "+player.getPlayerName());
         commands.push(this);
     }
 
     public void undo() {
+        PlayerMemento newMemento =  new PlayerMemento(player);
+        newMemento.save();
         playerMemento.restore();
+        playerMemento = newMemento;
+    }
+
+    public void redo() {
+        undo();
     }
 
     public ChangePlayerNameCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players,

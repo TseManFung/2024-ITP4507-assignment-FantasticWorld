@@ -10,7 +10,7 @@ public class RedoCommand implements Command {
         try {
             Command c = redos.pop();
             System.out.println("Command (" + c.toString() + ") is redone.");
-            c.execute();
+            c.redo();
             commands.push(c);
         } catch (EmptyStackException e) {
             System.out.println("No commands to redo");
@@ -18,8 +18,8 @@ public class RedoCommand implements Command {
     }
 
     public void undo() {
-        return;
     }
+    public void redo() {}
 
     public RedoCommand(Stack<Command> commands, Stack<Command> redos) {
         this.commands = commands;
