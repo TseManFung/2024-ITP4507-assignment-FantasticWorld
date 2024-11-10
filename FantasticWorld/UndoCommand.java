@@ -18,7 +18,9 @@ public class UndoCommand implements Command {
     }
 
     public void undo() {}
-    public void redo() {}
+    public boolean redo() {
+        return true;
+    }
 
     public UndoCommand(Stack<Command> commands, Stack<Command> redos) {
         this.commands = commands;

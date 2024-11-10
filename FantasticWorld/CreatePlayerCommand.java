@@ -26,9 +26,10 @@ public class CreatePlayerCommand extends RecordString implements Command {
         players.remove(p);
         ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer,msg);
     }
-    public void redo() {
+    public boolean redo() {
         players.add(p);
         ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(p,msg);
+        return true;
     }
 
     public CreatePlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,

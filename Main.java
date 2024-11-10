@@ -42,7 +42,7 @@ public class Main {
                         "The current player is " + currentPlayer.getPlayerID() + " " + currentPlayer.getPlayerName());
             }
             System.out.print("Please enter command [ c | g | a | m | d | s | p | t | u | r | l | x ] :-");
-            String InputCom = scanner.nextLine().trim();
+            String InputCom = scanner.nextLine().trim().toLowerCase();
             if(!factories.containsKey(InputCom)){
                 System.out.println("Invalid command: " + InputCom);
                 continue;

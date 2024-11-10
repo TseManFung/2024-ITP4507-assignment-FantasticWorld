@@ -34,8 +34,9 @@ public class DeleteHeroCommand extends RecordString implements Command {
         targetPlayer.addHero(hero);
     }
 
-    public void redo() {
+    public boolean redo() {
         targetPlayer.removeHero(hero);
+        return true;
     }
 
     public DeleteHeroCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players, Scanner scanner) {

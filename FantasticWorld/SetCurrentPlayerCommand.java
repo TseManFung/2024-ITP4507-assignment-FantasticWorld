@@ -32,8 +32,9 @@ public class SetCurrentPlayerCommand extends RecordString implements Command {
     public void undo() {
         ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(lastPlayer,msg);
     }
-    public void redo() {
+    public boolean redo() {
         ((RefCurrentPlayerAdapter) currentPlayer).setCurrentPlayer(player,msg);
+        return true;
     }
 
     public SetCurrentPlayerCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,

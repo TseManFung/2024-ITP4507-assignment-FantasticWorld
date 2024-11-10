@@ -26,6 +26,7 @@ public class ListUndoRedoCommand implements Command {
         this.commands = commands;
         this.redos = redos;
     }
-    public void redo() {
+    public boolean redo() {
+        return true;
     }
 }

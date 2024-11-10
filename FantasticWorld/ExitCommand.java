@@ -6,7 +6,7 @@ public class ExitCommand implements Command {
     public void undo(){
         
     }
-    public void redo(){
-        
+    public boolean redo(){
+        return true;
     }
 } 

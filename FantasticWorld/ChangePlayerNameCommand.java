@@ -32,8 +32,9 @@ public class ChangePlayerNameCommand extends RecordString implements Command {
         playerMemento = newMemento;
     }
 
-    public void redo() {
+    public boolean redo() {
         undo();
+        return true;
     }
 
     public ChangePlayerNameCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players,

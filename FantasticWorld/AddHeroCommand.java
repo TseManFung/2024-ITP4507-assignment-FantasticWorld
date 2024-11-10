@@ -56,9 +56,10 @@ public class AddHeroCommand extends RecordString implements Command {
     }
 
     @Override
-    public void redo() {
+    public boolean redo() {
         targetPlayer.addHero(h);
         System.out.println("Hero is added.");
         setRecordString("Add hero, " + h.getHeroID() + ", " + h.getHeroName() + ", " + h.getClass().getSimpleName());
+        return true;
     }
 }

@@ -17,7 +17,9 @@ public class ShowPlayerDetailCommand implements Command {
     }
 
     public void undo() {}
-    public void redo() {}
+    public boolean redo() {
+        return true;
+    }
 
     public ShowPlayerDetailCommand(Player currentPlayer,Stack<Command> commands, Vector<Player> players,
             Scanner scanner) {

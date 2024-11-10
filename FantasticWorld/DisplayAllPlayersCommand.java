@@ -29,6 +29,7 @@ public class DisplayAllPlayersCommand implements Command {
     }
 
     @Override
-    public void redo() {
+    public boolean redo() {
+        return true;
     }
 }

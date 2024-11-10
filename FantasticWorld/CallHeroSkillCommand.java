@@ -54,7 +54,7 @@ public class CallHeroSkillCommand extends RecordString implements Command {
         heroMemento.restore();
     }
 
-    public void redo() {
+    public boolean redo() {
         // save for fail
         HeroMemento TempHeroMemento = makHeroMemento(h);
 
@@ -69,9 +69,10 @@ public class CallHeroSkillCommand extends RecordString implements Command {
         }
         if (diff) {
             System.out.println("Hero's data is changed, can't redo.");
-            return;
+            return false;
         }
         h.callSkill();
+        return true;
     }
 
     public CallHeroSkillCommand(Player currentPlayer, Stack<Command> commands, Vector<Player> players,
