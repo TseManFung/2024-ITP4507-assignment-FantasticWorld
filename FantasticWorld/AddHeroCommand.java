@@ -21,7 +21,7 @@ public class AddHeroCommand extends RecordString implements Command {
         String s;
         System.out.print("\nPlease input hero information (id, name):- ");
         s = scanner.nextLine();
-        String[] heroInfo = s.split(",", 2);
+        String[] heroInfo = s.split(",| ", 2);
         System.out.print("\nHero Type (");
         for (int i = 0; i < heroType.length; i++) {
             System.out.print((i + 1) + " = " + heroType[i]);
@@ -29,7 +29,7 @@ public class AddHeroCommand extends RecordString implements Command {
                 System.out.print(" | ");
             }
         }
-        System.out.println("):- ");
+        System.out.print("):- ");
         s = scanner.nextLine().trim();
         int intHeroType = Integer.parseInt(s);
         if (intHeroType < 1 || intHeroType > heroType.length) {
