@@ -30,7 +30,8 @@ public class AddHeroCommand extends RecordString implements Command {
             }
         }
         System.out.println("):- ");
-        int intHeroType = Integer.parseInt(scanner.nextLine());
+        s = scanner.nextLine().trim();
+        int intHeroType = Integer.parseInt(s);
         if (intHeroType < 1 || intHeroType > heroType.length) {
             throw new IllegalArgumentException("Invalid hero type.");
         }
