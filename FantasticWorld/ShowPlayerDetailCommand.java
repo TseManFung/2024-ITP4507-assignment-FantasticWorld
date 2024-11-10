@@ -12,6 +12,10 @@ public class ShowPlayerDetailCommand implements Command {
     private Scanner scanner;
 
     public void execute() {
+        if (((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer() == null) {
+            System.out.println("\nPlease create / select a player first.");
+            return;
+        }
         System.out.println();
         currentPlayer.showPlayerDetails();
     }

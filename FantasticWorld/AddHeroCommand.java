@@ -14,7 +14,7 @@ public class AddHeroCommand extends RecordString implements Command {
 
     public void execute() {
         if (((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer() == null) {
-            System.out.println("Please create / select a player first.");
+            System.out.println("\nPlease create / select a player first.");
             return;
         }
         targetPlayer = ((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer();

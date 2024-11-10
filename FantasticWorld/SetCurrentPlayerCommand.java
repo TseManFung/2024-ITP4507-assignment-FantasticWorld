@@ -13,6 +13,10 @@ public class SetCurrentPlayerCommand extends RecordString implements Command {
     String msg = "Changed current player to ";
 
     public void execute() {
+        if(players.isEmpty()){
+            System.out.println("\nNo player is created yet!!");
+            return;
+        }
         System.out.print("\nPlease input player ID:- ");
         String playerID = scanner.nextLine().trim();
         System.out.println();

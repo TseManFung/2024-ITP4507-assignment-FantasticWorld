@@ -14,6 +14,10 @@ public class CallHeroSkillCommand extends RecordString implements Command {
     private HeroMemento heroMemento;
 
     public void execute() {
+        if (((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer() == null) {
+            System.out.println("\nPlease create / select a player first.");
+            return;
+        }
         System.out.print("\nPlease input hero ID:- ");
         String heroID = scanner.nextLine().trim();
         System.out.println();

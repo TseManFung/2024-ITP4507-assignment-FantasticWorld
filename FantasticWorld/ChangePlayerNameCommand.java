@@ -14,6 +14,10 @@ public class ChangePlayerNameCommand extends RecordString implements Command {
     private Player player;
 
     public void execute() {
+        if (((RefCurrentPlayerAdapter) currentPlayer).getCurrentPlayer() == null) {
+            System.out.println("\nPlease create / select a player first.");
+            return;
+        }
         System.out.print("\nPlease input new name of the current player:- ");
         String newPlayerName = scanner.nextLine().trim();
         player = ((RefCurrentPlayerAdapter)currentPlayer).getCurrentPlayer();
